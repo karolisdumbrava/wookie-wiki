@@ -7,4 +7,13 @@ export type StarWarsFilm = {
 
 export type StarWarsCharacter = {
   name: string;
+  birth_year: string;
+  gender: string;
+  mass: string;
 };
+
+interface RootState {
+  films: StarWarsFilm[];
+  characters: StarWarsCharacter[];
+}
+
