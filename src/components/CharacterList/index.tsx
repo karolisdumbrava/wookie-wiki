@@ -9,12 +9,14 @@ interface CharacterListProps {
   selectedFilm: StarWarsFilm;
   fetchMessageCharacters: string | null;
   loadingCharacters: boolean;
+  handleShowPeople: (film: StarWarsFilm) => void;
 }
 
 const CharacterList: React.FC<CharacterListProps> = ({
-    selectedFilm,
-    fetchMessageCharacters,
-    loadingCharacters,
+  selectedFilm,
+  fetchMessageCharacters,
+  loadingCharacters,
+  handleShowPeople,
 }) => {
   const characters = useSelector((state: RootState) => state.characters);
 
@@ -25,7 +27,17 @@ const CharacterList: React.FC<CharacterListProps> = ({
       <p className="text-lg mb-2">Release Date: {selectedFilm.release_date}</p>
       <h3 className="text-xl font-bold mb-2">People in Film Title :</h3>
       {fetchMessageCharacters && (
-        <p className="text-red-500 mb-2">{fetchMessageCharacters}</p>
+        <div className="flex justify-between">
+          <div className="text-red-500 mb-2">{fetchMessageCharacters}</div>
+          <div>
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded-md"
+              onClick={() => handleShowPeople(selectedFilm)}
+            >
+              Retry
+            </button>
+          </div>
+        </div>
       )}
       <ul>
         {loadingCharacters && <LoadingSpinner />}
@@ -37,8 +49,7 @@ const CharacterList: React.FC<CharacterListProps> = ({
             <div>Mass</div>
           </div>
         )}
-        {characters &&
-          characters.length > 0 &&
+        {characters && characters.length > 0 ? (
           characters?.map((character: StarWarsCharacter, key: number) => {
             return (
               <li key={key} className="text-lg mb-2 grid grid-cols-4">
@@ -50,7 +61,14 @@ const CharacterList: React.FC<CharacterListProps> = ({
                 </div>
               </li>
             );
-          })}
+          })
+        ) : (
+          <div>
+            {fetchMessageCharacters && (
+              <div className="text-red-500 mb-2">{fetchMessageCharacters}</div>
+            )}
+          </div>
+        )}
       </ul>
     </div>
   );

@@ -23,14 +23,10 @@ export const Films = () => {
     string | null
   >(null);
 
-  const [loadingFilms, setLoadingFilms] = useState(true);
+  const [loadingFilms, setLoadingFilms] = useState(false);
   const [loadingCharacters, setLoadingCharacters] = useState(false);
 
   const handleShowPeople = (film: StarWarsFilm) => {
-    if (selectedFilm && film.title === selectedFilm.title) {
-      return;
-    }
-
     dispatch(setCharacters([]));
     setFetchMessageCharacters(null);
 
@@ -43,8 +39,9 @@ export const Films = () => {
       );
 
       const validCharacters = data.filter(Boolean);
-
-      if (validCharacters.length !== film.characters.length) {
+      if (validCharacters.length === 0) {
+        setFetchMessageCharacters("Failed to fetch characters");
+      } else if (validCharacters.length !== film.characters.length) {
         setFetchMessageCharacters(
           `Failed to fetch ${
             film.characters.length - validCharacters.length
@@ -71,8 +68,11 @@ export const Films = () => {
       setLoadingFilms(false);
     };
 
-    fetchFilms();
-  }, [dispatch]);
+    if (films.length === 0) {
+      setLoadingFilms(true);
+      fetchFilms();
+    }
+  }, [dispatch, films]);
 
   return (
     <div className="p-4 w-screen">
@@ -87,6 +87,7 @@ export const Films = () => {
       </div>
       {selectedFilm && (
         <CharacterList
+          handleShowPeople={handleShowPeople}
           characters={characters}
           selectedFilm={selectedFilm}
           fetchMessageCharacters={fetchMessageCharacters}

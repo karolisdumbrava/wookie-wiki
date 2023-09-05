@@ -11,7 +11,7 @@ const FilmList: React.FC<FilmListProps> = ({ films, handleShowPeople}) => {
 
   return (
     <>
-        {films.map((film, key) => (
+        {films?.map((film, key) => (
             <div
               key={key}
               className="inline-block bg-gray-800 p-4 rounded-lg mb-4 min-w-64 mr-4"
