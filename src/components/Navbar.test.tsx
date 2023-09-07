@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, fireEvent, screen, cleanup } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Navbar } from './Navbar';
 

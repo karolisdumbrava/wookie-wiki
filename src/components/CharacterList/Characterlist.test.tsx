@@ -3,9 +3,7 @@ import CharacterList from ".";
 import store, { createStore } from "../../redux/store";
 import { render, screen, waitFor } from "@testing-library/react";
 import { StarWarsFilm } from "../../redux/types";
-import * as api from "../../utils/api";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/reducers";
 
 jest.mock("../../utils/api");
 

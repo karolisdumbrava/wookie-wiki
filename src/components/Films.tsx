@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchData } from "../utils/api";
 import { LoadingSpinner } from "../assets/LoadingSpinner";
 import { StarWarsFilm } from "../redux/types";
