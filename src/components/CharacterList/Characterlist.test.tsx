@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import CharacterList from ".";
+import CharacterList from "./CharacterList";
 import store, { createStore } from "../../redux/store";
 import { render, screen, waitFor } from "@testing-library/react";
 import { StarWarsFilm } from "../../redux/types";

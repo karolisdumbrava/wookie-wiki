@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers";
 import { setFilms, setSelectedFilm } from "../redux/actions/films";
 import { setCharacters } from "../redux/actions/characters";
-import FilmList from "./FilmList";
-import CharacterList from "./CharacterList";
+import FilmList from "./FilmList/FilmList";
+import CharacterList from "./CharacterList/CharacterList";
 
 export const Films = () => {
   const dispatch = useDispatch();

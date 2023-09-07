@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { render, screen } from "@testing-library/react";
 import store from "../../redux/store";
 import * as api from "../../utils/api";
-import FilmList from ".";
+import FilmList from "./FilmList";
 import { StarWarsFilm } from "../../redux/types";
 
 jest.mock("../../utils/api");
