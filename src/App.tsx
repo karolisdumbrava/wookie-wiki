@@ -10,9 +10,9 @@ import { About } from './components/About';
 
 function App({ useRouter = true }: { useRouter?: boolean }) {
   const RenderedContent = () => (
-    <div className='w-full min-h-screen bg-gray-900 text-white flex flex-col lg:flex-row'>
+    <div className='w-full min-h-screen bg-gray-900 text-white flex flex-col'>
       <Navbar />
-      <div className='flex-1 flex flex-col overflow-hidden lg:ml-64'>
+      <div className='flex-1 flex flex-col overflow-hidden'>
         <div className='flex-1 overflow-y-auto'>
           <Routes>
             <Route path="/about" element={<About />} />

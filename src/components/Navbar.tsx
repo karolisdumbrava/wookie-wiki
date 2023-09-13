@@ -5,9 +5,9 @@ export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="flex flex-col lg:flex-row lg:min-h-screen sticky top-0">
-            <nav className="bg-black p-4 lg:w-64 lg:h-screen lg:fixed">
-                <div className="flex justify-between lg:block">
+        <div className="flex flex-col sticky top-0">
+            <nav className="bg-black p-4 lg:flex lg:justify-between">
+                <div className="flex justify-between">
                     <h1 className="text-2xl font-bold text-white mb-4">
                         Wookiee-Wiki
                     </h1>
@@ -18,7 +18,7 @@ export const Navbar = () => {
                         Menu
                     </button>
                 </div>
-                <ul className={` ${isOpen ? 'block absolute bg-black w-full -ml-4' : 'hidden'} lg:block`}>
+                <ul className={` ${isOpen ? 'block absolute bg-black w-full -ml-4' : 'hidden'} lg:flex`}>
                     <li onClick={() => setIsOpen(false)}>
                         <Link to="/about" className="block p-2 lg:inline-block text-yellow-500 hover:text-yellow-400 lg:mt-0 lg:mr-4">About</Link>
                     </li>
